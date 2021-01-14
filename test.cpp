@@ -2,32 +2,34 @@
 
 #include "gtest/gtest.h"
 
-TEST(EchoTest, HelloWorld) {
+TEST(EchoTest, Helloworld) {
 	char* test_val[3]; test_val[0] = "./c-echo"; test_val[1] = "hello"; test_val[2] = "world";
-	EXPECT_EQ("hello world", echo(3,test_val));
+	EXPECT_EQ("hello world", echo(3, test_val));
 }
 
 TEST(EchoTest, EmptyString) {
 	char* test_val[1]; test_val[0] = "./c-echo";
-	EXPECT_EQ("", echo(1,test_val));
+	EXPECT_EQ("", echo(1, test_val));
 }
 
-TEST(EchoTest, Integers){
-	char* test_val[3]; test_val[0] = "./c-echo"; test_val[1] = "1"; test_val[2] = "2";
-	EXPECT_EQ("1 2", echo(3,test_val));
+
+TEST(EchoTest, Numbers) {
+	char* test_val[2]; test_val[0] = "./c-echo"; test_val[1] = "0123456789";
+	EXPECT_EQ("0123456789", echo(2, test_val));
 }
 
-TEST(EchoTest, RandomCapitalization){
-	char* test_val[2]; test_val[0] = "./c-echo"; test_val[1] = "AaBb";
-	EXPECT_EQ("AaBb", echo(2, test_val));
+TEST(EchoTest, Letters) {
+	char* test_val[2]; test_val[0] = "./c-echo"; test_val[1] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	EXPECT_EQ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", echo(2, test_val));
 }
 
-TEST(EchoTest, CorrectOutput){
-	char* test_val[4]; test_val[0] = "./c-echo"; test_val[1] = "Is"; test_val[2] = "this"; test_val[3] = "correct?";
-	EXPECT_EQ("Is this correct?", echo(4, test_val));
+
+TEST(EchoTest, MultipleBlanks) {
+	char* test_val[3]; test_val[0] = "./c-echo"; test_val[1] = ""; test_val[2] = "";
+	EXPECT_EQ(" ", echo(3, test_val));
 }
 
 int main(int argc, char **argv) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
+	::testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
 }
