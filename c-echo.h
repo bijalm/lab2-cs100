@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 std::string echo(int length, char** chars) {
